@@ -10,7 +10,7 @@ body {
   font-family: 'Muli', sans-serif;
   overflow: hidden;
   margin: 0;
-  background: blue;
+  background: grey;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -22,6 +22,7 @@ body {
   padding: 0 15px;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .slide {
@@ -29,4 +30,66 @@ body {
   flex: 1;
   height: 85vh;
   color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.slide::before,
+.slide-active::before,
+.slide::after,
+.slide-active::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  bottom: 15px;
+  right: 15px;
+  transition: 0.5s;
+}
+
+.slide::before {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: scale(0, 1);
+}
+
+.slide::after {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  transform: scale(1, 0);
+}
+
+.slide__title {
+  position: absolute;
+  left: 30px;
+  bottom: -5vh;
+  pointer-events: none;
+  transition: bottom 0.5s;
+}
+
+.slide-active {
+  flex: 10;
+  transform: scale(1.07);
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.slide-active::before {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: scale(1, 1);
+}
+
+.slide-active::after {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  transform: scale(1, 1);
+}
+
+.slide-active .slide__title {
+  bottom: 30px;
 }
